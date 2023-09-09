@@ -1,1 +1,5 @@
 # CasaDelDonors
+ALWAYS REMEMBER:
+1.PUSH
+2.COMMIT
+3.PULL
