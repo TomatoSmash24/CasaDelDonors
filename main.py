@@ -1,4 +1,4 @@
-from os import name
+
 from flask import Flask
 
 app=Flask(__name__)
@@ -7,5 +7,5 @@ app=Flask(__name__)
 def home():
     return "Hello World"
 
-if name == 'main':
+if __name__ == 'main':
     app.run(debug=True)
