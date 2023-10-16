@@ -8,4 +8,4 @@ def home():
     return "Hello World"
 
 if __name__ == 'main':
-    app.run(port=3000,debug=True)
+    app.run(debug=True)
