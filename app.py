@@ -17,7 +17,7 @@ def toys():
 
 @app.route('/money')
 def money():
-    return render_template('money donations.html')
+    return render_template('money.html')
 
 @app.route('/household')
 def household():
