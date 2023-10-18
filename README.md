@@ -23,6 +23,7 @@ Enter the virtual environment (say, venv) by running the following command in th
 venv\scripts\activate
 ```
 This will activate the virtual environment (venv). This can be verified by checking for a header that says '(venv)' before or above your command prompt.
+
 When you close the command prompt, the virtual environment will be deactivated automatically.
 or if you want to deactivate the virtual environment manually, run:
 ```shell
