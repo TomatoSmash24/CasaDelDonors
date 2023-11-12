@@ -6,10 +6,10 @@ Web Application for users to donate items to charity.
 ## 1) Clone the repo to any folder/directory of your choice.
 Run this command:
 ```bash
-git clone https://github.com/TomatoSmash24/CasaDelDonors.git/CasaDelDonors.git
+git clone https://github.com/TomatoSmash24/CasaDelDonors.git
 ```
-OR
-<hr>
+### OR
+
 Clone the repo using GitHub Desktop by going to `Code` option in the repo main page and clicking `Open With Github Desktop`
 
 ## 2) Create a Virtual Environment
@@ -41,6 +41,11 @@ pip install flask
 ```
 The above command installs flask in the environment.
 Again, make sure that you are in the virtual environment before installing the required modules.
+### OR
+```shell
+pip install -r requirements.txt
+```
+This will install all the required modules for the application in the virtual environment.
 
 ## 5) Run the application
 Run the application by running the following command in the VS Code Command Prompt terminal:
