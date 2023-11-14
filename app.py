@@ -63,7 +63,6 @@ def verify():
             return redirect(url_for("participants", name=name1))
     else:
         return render_template("verify.html")
-    
 
 
 @app.route("/")
