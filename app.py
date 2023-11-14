@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -43,6 +43,27 @@ def participants():
 
     data = cursor.fetchall()
     return render_template("participants.html", data=data)
+
+
+database = {"Sidharth": "696", "Syed Imad": "123", "VipulBSD": "987"}
+
+
+@app.route("/verify", methods=["GET", "POST"])
+def verify():
+    if request.method == "POST":
+        name1 = request.form.get("username")
+        pwd = request.form.get("password")
+        if name1 is None or name1 not in database:
+            error_message = "Invalid username"
+            return render_template("verify.html", error_message=error_message)
+        elif database[name1] != pwd:
+            error_message = "Invalid password"
+            return render_template("verify.html", error_message=error_message)
+        else:
+            return redirect(url_for("participants", name=name1))
+    else:
+        return render_template("verify.html")
+    
 
 
 @app.route("/")

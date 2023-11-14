@@ -11,6 +11,12 @@ git clone https://github.com/TomatoSmash24/CasaDelDonors.git
 ### OR
 
 Clone the repo using GitHub Desktop by going to `Code` option in the repo main page and clicking `Open With Github Desktop`
+<hr>
+To pull the latest changes:
+```bash 
+git pull 
+```
+<hr>
 
 ## 2) Create a Virtual Environment
 Virtual environments are required to ensure that dependencies are kept distinct and installed only for that particular project.
