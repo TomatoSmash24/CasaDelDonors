@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #uploadInput {
+            display: none; /* Hide the default file input style */
+        }
+
+        #uploadButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #successMessage {
+            color: green;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="uploadButton">Upload Image</button>
+    <input type="file" id="uploadInput" style="display: none">
+    <div id="successMessage"></div>
+
+    <a href="{{ url_for('toy_list') }}">
+    <button id="uploadButton">View Toys 
+    </button>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadButton = document.getElementById('uploadButton');
+            const uploadInput = document.getElementById('uploadInput');
+            const successMessage = document.getElementById('successMessage');
+
+            uploadButton.addEventListener('click', function () {
+                // Trigger the hidden file input when the button is clicked 
+                uploadInput.click();
+            });
+
+            uploadInput.addEventListener('change', function () {
+                // Handle the file selection and display success message
+                const fileName = uploadInput.value.split('\\').pop(); // Get the file name
+                successMessage.textContent = `Successfully uploaded toy!`;        
+            });
+        });
+    </script>
+</body>
+</html>

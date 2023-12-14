@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+import os
 
 app = Flask(__name__)
 
@@ -45,7 +46,7 @@ def participants():
     return render_template("participants.html", data=data)
 
 
-database = {"Sidharth": "696", "Syed Imad": "123", "VipulBSD": "987"}
+database = {"Sidharth": "696", "Syed": "123", "Vipul": "987"}
 
 
 @app.route("/verify", methods=["GET", "POST"])
@@ -75,9 +76,36 @@ def clothes():
     return render_template("clothes.html")
 
 
+# start for toys
 @app.route("/toys")
 def toys():
-    return render_template("toys.html")
+    images = os.listdir("static/toys_images")
+    return render_template("toys.html", images=images)
+
+
+@app.route("/donate toys")
+def donate():
+    return render_template("toys_donate.html")
+
+
+@app.route("/upload toy image")
+def upload():
+    return render_template("toys_upload.html")
+
+
+@app.route("/upload", methods=["POST"])
+def upload_file():
+    file = request.files["file"]
+    # Do something with the file
+    return "File uploaded successfully"
+
+
+@app.route("/toy_list")
+def toy_list():
+    return render_template("toy_list.html")
+
+
+# end for toys
 
 
 @app.route("/money")

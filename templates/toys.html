@@ -1,13 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOYS</title>
-</head>
-<body>
-    <h4>What type of toys you want to donate ?</h4>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toys</title>
+    <style>
+      body {
+        font-family: Algerian, sans-serif;
+        text-align: center;
+        padding: 20px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+      }
 
+      .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .product {
+        margin: 20px;
+        text-align: center;
+        padding: 15px; /* Padding inside the border */
+        border: 2px solid rgb(0, 0, 0) ddd; /* Border around each product */
+        border-radius: 8px; /* Rounded corners */
+      }
+
+      .product img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        padding: 5px;
+        box-sizing: border-box; /* Include padding and border in element's total width and height */
+      }
+
+      .product p {
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      .donate-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>You can donate too!</h1>
+    <h2>Kids love toys!!!</h2>
+
+    {% for image in images %}
+    <img
+      src="{{ url_for('static', filename='toys_images/' + image) }}"
+      style="max-height: 200px; max-width: 200px"
+      alt="Image"
+    />
+    {% endfor %}
+    <a
+      href="{{ url_for('upload') }}"
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25vh;
+      "
+    >
+      <button class="donate-button">Donate</button>
+    </a>
+  </body>
 </html>
