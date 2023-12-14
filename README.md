@@ -115,18 +115,28 @@ git clone https://github.com/<YOUR USERNAME>/CasaDelDonors.git
 ```
 
 Replace \<YOUR USERNAME> with your Github username.
+<hr>
 
-If you have already cloned it, MAKE SURE TO REGULARLY RUN
+Once you've cloned it, add a remote origin to the master branch so that you can pull the changes made in the master version into your version.
 
+You can achieve this by running
+```powershell
+git remote add upstream https://github.com/TomatoSmash24/CasaDelDonors.git
 ```
-git pull
+
+Now you can regularly run
 ```
+git pull upstream master
+```
+to pull all the changes from the master branch (this version) into your local version.
+
+Note that `git pull upstream master` only works if you haven't made any changes, so before you make changes YOU MUST RUN `git pull upstream master`.
 
 This will pull all changes from the remote version into this version.
 
 ### 4. Make your changes
 
-You can still run your code here [as usual](#5-start-server). Make changes, and they will reflect.
+You can still run your code here. Make changes, and they will reflect.
 Just make sure you are not running both web servers at the same time.
 
 Once you are done making changes, you can commit them to Git by running
@@ -136,6 +146,7 @@ git add .
 git commit -m "<PROVIDE A SHORT DESCRIPTION OF CHANGES YOU MADE HERE (REQUIRED)>"
 git push origin master
 ```
+Remember -  you are commiting only to your version of the file(that is, the forked version), hence once the changes are pushed, you will have to create a pull request for merging the changes to the main repo.
 
 ### 5. Create a pull request
 
