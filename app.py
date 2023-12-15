@@ -1,18 +1,42 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import os
+from flask_login import LoginManager, login_user
 
+# login_manager = LoginManager()
 app = Flask(__name__)
+# login_manager.init_app(app)
+# login_manager.login_view = 'join'
+
+
 
 connect = sqlite3.connect("database.db")
 connect.execute(
-    "CREATE TABLE IF NOT EXISTS PARTICIPANTS (name TEXT, email TEXT, city TEXT, country TEXT, phone TEXT)"
+    "CREATE TABLE IF NOT EXISTS PARTICIPANTS (name TEXT, email TEXT, city TEXT, country TEXT, phone TEXT, password TEXT)"
 )
 
 
 @app.route("/index")
 def index():
     return render_template("index.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+
+        with sqlite3.connect("database.db") as conn:
+            user = conn.execute('''SELECT * FROM PARTICIPANTS WHERE email = (?)''', (email,))
+            u = user.fetchall()
+
+            if u[0][-1] == password:
+                # Migrate to SQL_Alchemy to make this work
+                # login_user(u)
+                return redirect(url_for("home"))
+
+    return render_template("login.html")
 
 
 @app.route("/join", methods=["GET", "POST"])
@@ -23,12 +47,13 @@ def join():
         city = request.form["city"]
         country = request.form["country"]
         phone = request.form["phone"]
+        password = request.form["password"]
 
         with sqlite3.connect("database.db") as users:
             cursor = users.cursor()
             cursor.execute(
-                "INSERT INTO PARTICIPANTS (name,email,city,country,phone) VALUES (?,?,?,?,?)",
-                (name, email, city, country, phone),
+                "INSERT INTO PARTICIPANTS (name,email,city,country,phone,password) VALUES (?,?,?,?,?,?)",
+                (name, email, city, country, phone, password),
             )
             users.commit()
         return render_template("index.html")
