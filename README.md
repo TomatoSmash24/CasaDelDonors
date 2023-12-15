@@ -126,11 +126,11 @@ git remote add upstream https://github.com/TomatoSmash24/CasaDelDonors.git
 
 Now you can regularly run
 ```
-git pull upstream master
+git pull upstream main
 ```
 to pull all the changes from the master branch (this version) into your local version.
 
-Note that `git pull upstream master` only works if you haven't made any changes, so before you make changes YOU MUST RUN `git pull upstream master`.
+Note that `git pull upstream main` only works if you haven't made any changes, so before you make changes YOU MUST RUN `git pull upstream main`.
 
 This will pull all changes from the remote version into this version.
 
