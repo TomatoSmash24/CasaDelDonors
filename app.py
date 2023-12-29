@@ -3,12 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_login import LoginManager, login_user, UserMixin
 
-# login_manager = LoginManager()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'tomato'
+app.config["SECRET_KEY"] = "tomato"
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login' # type: ignore
+login_manager.login_view = "login"  # type: ignore
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
@@ -42,12 +41,9 @@ def load_user(user_id):
     return Participant.query.get(int(user_id))
 
 
-
 @app.route("/index")
 def index():
     return render_template("index.html")
-
-
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -61,7 +57,7 @@ def login():
         if user and user.password == password:
             login_user(user)
             return redirect(url_for("home"))
-    
+
     return render_template("login.html")
 
 
@@ -76,7 +72,12 @@ def join():
         password = request.form["password"]
 
         participant = Participant(
-            name=name, email=email, city=city, country=country, phone=phone, password=password
+            name=name,
+            email=email,
+            city=city,
+            country=country,
+            phone=phone,
+            password=password,
         )
         db.session.add(participant)
         db.session.commit()
@@ -136,7 +137,6 @@ def donate():
 @app.route("/upload toy image")
 def upload():
     return render_template("toys_upload.html")
-
 
 
 @app.route("/upload", methods=["POST"])
