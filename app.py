@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_login import LoginManager, login_user, UserMixin
 
+# login_manager = LoginManager()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tomato'
 login_manager = LoginManager()
